@@ -71,7 +71,7 @@ export default function Home() {
           <div className="text-center mb-8">
             <div className="relative w-32 h-32 mx-auto mb-6 rounded-3xl overflow-hidden border-4 border-red-500 shadow-2xl">
               <img
-                src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/Nova-Imagem-Plan-A-Livro.png"
+                src="http://renacer21.shop/wp-content/uploads/2025/10/8ab951a3-65e5-4f93-98df-0601868719ff.png"
                 alt="Protocolo de Dominancia Emocional"
                 className="w-full h-full object-cover"
               />
