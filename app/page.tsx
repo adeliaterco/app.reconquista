@@ -1,61 +1,45 @@
 "use client"
 
-import { useState, useEffect, useCallback, useRef } from "react"
+import { useState, useEffect } from "react"
 
-// GA otimizado com debounce (mantido)
-const enviarEvento = (() => {
-  let queue = [];
-  let timeout;
-  
-  return (evento, props = {}) => {
-    queue.push({ evento, props });
-    clearTimeout(timeout);
-    
-    timeout = setTimeout(() => {
-      if (typeof window !== 'undefined' && window.gtag && queue.length) {
-        queue.forEach(({ evento, props }) => {
-          window.gtag('event', evento, props);
-        });
-        queue = [];
-      }
-    }, 300);
-  };
-})();
-
-// Hook para Intersection Observer com fallback (mantido)
-const useIntersectionObserver = (options = {}) => {
-  const [isIntersecting, setIsIntersecting] = useState(false);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    if (!window.IntersectionObserver) {
-      setIsIntersecting(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(([entry]) => {
-      setIsIntersecting(entry.isIntersecting);
-    }, { threshold: 0.1, ...options });
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  return [ref, isIntersecting];
-};
-
-// Componente de Login
-const LoginScreen = ({ onLogin }) => {
+export default function Home() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e) => {
+  // Função de login
+  const handleLogin = (emailValue) => {
+    setUserEmail(emailValue);
+    setIsLoggedIn(true);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('member_email', emailValue);
+    }
+  };
+
+  // Função de logout
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUserEmail('');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('member_email');
+    }
+  };
+
+  // Verificar localStorage
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedEmail = localStorage.getItem('member_email');
+      if (savedEmail) {
+        setUserEmail(savedEmail);
+        setIsLoggedIn(true);
+      }
+    }
+  }, []);
+
+  // Handle form submit
+  const handleSubmit = (e) => {
     e.preventDefault();
     
     if (!email) {
@@ -71,111 +55,108 @@ const LoginScreen = ({ onLogin }) => {
     setIsLoading(true);
     setError('');
 
-    // Simular validação
     setTimeout(() => {
-      console.log('✅ Email validado:', email);
-      enviarEvento('login_attempt', { email: email.split('@')[1] });
-      onLogin(email);
+      handleLogin(email);
       setIsLoading(false);
     }, 1500);
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        
-        {/* Logo/Foto do Produto */}
-        <div className="text-center mb-8">
-          <div className="relative w-32 h-32 mx-auto mb-6 rounded-3xl overflow-hidden border-4 border-red-500 shadow-2xl shadow-red-500/20">
-            <img
-              src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/Nova-Imagem-Plan-A-Livro.png"
-              alt="Protocolo de Dominancia Emocional"
-              className="w-full h-full object-cover"
-              loading="eager"
-            />
-          </div>
+  // Se não estiver logado, mostrar tela de login
+  if (!isLoggedIn) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center p-4">
+        <div className="w-full max-w-md">
           
-          <h1 className="text-2xl md:text-3xl font-black text-red-500 mb-2 uppercase tracking-tight">
-            Área de Miembros
-          </h1>
-          <p className="text-gray-300 text-sm">Protocolo de Dominancia Emocional</p>
-        </div>
-
-        {/* Formulário de Login */}
-        <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 shadow-2xl">
-          <div className="text-center mb-6">
-            <h2 className="text-xl font-bold text-white mb-2">🔐 Acceso Exclusivo</h2>
-            <p className="text-gray-400 text-sm">Ingresa tu email para acceder a tu contenido</p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                Email de acceso
-              </label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  setError('');
-                }}
-                placeholder="tu@email.com"
-                className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
-                disabled={isLoading}
+          {/* Logo/Foto do Produto */}
+          <div className="text-center mb-8">
+            <div className="relative w-32 h-32 mx-auto mb-6 rounded-3xl overflow-hidden border-4 border-red-500 shadow-2xl">
+              <img
+                src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/Nova-Imagem-Plan-A-Livro.png"
+                alt="Protocolo de Dominancia Emocional"
+                className="w-full h-full object-cover"
               />
             </div>
+            
+            <h1 className="text-2xl md:text-3xl font-black text-red-500 mb-2 uppercase tracking-tight">
+              Área de Miembros
+            </h1>
+            <p className="text-gray-300 text-sm">Protocolo de Dominancia Emocional</p>
+          </div>
 
-            {error && (
-              <div className="text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-lg p-3">
-                ⚠️ {error}
+          {/* Formulário de Login */}
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 shadow-2xl">
+            <div className="text-center mb-6">
+              <h2 className="text-xl font-bold text-white mb-2">🔐 Acceso Exclusivo</h2>
+              <p className="text-gray-400 text-sm">Ingresa tu email para acceder a tu contenido</p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                  Email de acceso
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setError('');
+                  }}
+                  placeholder="tu@email.com"
+                  className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
+                  disabled={isLoading}
+                />
               </div>
-            )}
 
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-500 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-            >
-              {isLoading ? (
-                <span className="flex items-center justify-center">
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                  Verificando acceso...
-                </span>
-              ) : (
-                <span className="flex items-center justify-center">
-                  Acceder a mi área
-                  <span className="ml-2">→</span>
-                </span>
+              {error && (
+                <div className="text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-lg p-3">
+                  ⚠️ {error}
+                </div>
               )}
-            </button>
-          </form>
 
-          <div className="mt-6 text-center">
-            <p className="text-gray-500 text-xs">
-              🔒 Acceso seguro y encriptado
-            </p>
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-500 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              >
+                {isLoading ? (
+                  <span className="flex items-center justify-center">
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                    Verificando acceso...
+                  </span>
+                ) : (
+                  <span className="flex items-center justify-center">
+                    Acceder a mi área
+                    <span className="ml-2">→</span>
+                  </span>
+                )}
+              </button>
+            </form>
+
+            <div className="mt-6 text-center">
+              <p className="text-gray-500 text-xs">
+                🔒 Acceso seguro y encriptado
+              </p>
+            </div>
+          </div>
+
+          {/* Informações de suporte */}
+          <div className="text-center mt-6">
+            <p className="text-gray-400 text-sm mb-2">¿Problemas de acceso?</p>
+            <a 
+              href="mailto:soporte.plan.a@gmail.com"
+              className="text-red-400 hover:text-red-300 text-sm font-medium transition-colors duration-300"
+            >
+              soporte.plan.a@gmail.com
+            </a>
           </div>
         </div>
-
-        {/* Informações de suporte */}
-        <div className="text-center mt-6">
-          <p className="text-gray-400 text-sm mb-2">¿Problemas de acceso?</p>
-          <a 
-            href="mailto:soporte.plan.a@gmail.com"
-            className="text-red-400 hover:text-red-300 text-sm font-medium transition-colors duration-300"
-          >
-            soporte.plan.a@gmail.com
-          </a>
-        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
 
-// Componente da Área de Membros
-const MembersArea = ({ userEmail, onLogout }) => {
+  // Se estiver logado, mostrar área de membros
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
@@ -187,7 +168,7 @@ const MembersArea = ({ userEmail, onLogout }) => {
           
           {/* Botão de logout */}
           <button
-            onClick={onLogout}
+            onClick={handleLogout}
             className="absolute top-4 right-4 text-gray-400 hover:text-red-400 transition-colors duration-300 z-10"
             title="Cerrar sesión"
           >
@@ -212,8 +193,6 @@ const MembersArea = ({ userEmail, onLogout }) => {
           </div>
         </div>
         
-        {/* Cards dos Produtos DESBLOQUEADOS */}
-        
         {/* Card do Plan A */}
         <div className="mb-12">
           <a 
@@ -228,7 +207,6 @@ const MembersArea = ({ userEmail, onLogout }) => {
                     src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/Nova-Imagem-Plan-A-Livro.png"
                     alt="Plan A: Reconquista en 21 Días"
                     className="w-full h-full object-cover"
-                    loading="lazy"
                   />
                 </div>
 
@@ -242,19 +220,30 @@ const MembersArea = ({ userEmail, onLogout }) => {
                   </p>
                   
                   <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8">
-                    {[
-                      "10 Módulos de transformación completa",
-                      "Diagnóstico profundo de la ruptura", 
-                      "Protocolo de emergencia de 72 horas",
-                      "7 Pilares avanzados de reconquista",
-                      "Cronograma detallado de 21 días",
-                      "Casos de estudio reales y plantillas probadas"
-                    ].map((feature, index) => (
-                      <li key={index} className="flex items-center text-white text-sm md:text-base">
-                        <span className="w-4 h-4 text-red-500 mr-3 flex-shrink-0">✓</span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-red-500 mr-3 flex-shrink-0">✓</span>
+                      <span>10 Módulos de transformación completa</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-red-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Diagnóstico profundo de la ruptura</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-red-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Protocolo de emergencia de 72 horas</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-red-500 mr-3 flex-shrink-0">✓</span>
+                      <span>7 Pilares avanzados de reconquista</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-red-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Cronograma detallado de 21 días</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-red-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Casos de estudio reales y plantillas probadas</span>
+                    </li>
                   </ul>
                   
                   <button className="bg-gradient-to-r from-red-500 to-red-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-lg font-semibold uppercase tracking-wide transition-all duration-300 hover:from-red-600 hover:to-red-500 hover:shadow-lg hover:shadow-red-500/30 hover:-translate-y-1 flex items-center gap-3 mx-auto md:mx-0">
@@ -267,7 +256,7 @@ const MembersArea = ({ userEmail, onLogout }) => {
           </a>
         </div>
 
-        {/* Card 15 Maneiras - DESBLOQUEADO */}
+        {/* Card 15 Maneiras */}
         <div className="mb-12">
           <a 
             href="https://comprarplanseguro.shop/15-maneras/"
@@ -275,7 +264,6 @@ const MembersArea = ({ userEmail, onLogout }) => {
           >
             <div className="relative bg-gradient-to-br from-gray-800 to-yellow-900/10 border-2 border-yellow-500/30 rounded-3xl p-6 md:p-10 transition-all duration-500 overflow-hidden cursor-pointer hover:border-yellow-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-yellow-500/20">
               
-              {/* Badge exclusivo */}
               <div className="absolute top-5 right-5 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm font-bold uppercase tracking-wide animate-pulse z-20">
                 🎁 EXCLUSIVO
               </div>
@@ -286,7 +274,6 @@ const MembersArea = ({ userEmail, onLogout }) => {
                     src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/imagem_gerada-2025-06-12T001538.498.png"
                     alt="15 Maneras Irresistibles"
                     className="w-full h-full object-cover"
-                    loading="lazy"
                   />
                 </div>
 
@@ -296,24 +283,8 @@ const MembersArea = ({ userEmail, onLogout }) => {
                   </h2>
                   
                   <p className="text-white text-sm md:text-lg mb-6 leading-relaxed">
-                    Una guía definitiva para la comunicación digital eficaz. Material desarrollado tras años de investigación en psicología del comportamiento y análisis de patrones de comunicación digital.
+                    Una guía definitiva para la comunicación digital eficaz. Material desarrollado tras años de investigación en psicología del comportamiento.
                   </p>
-                  
-                  <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8">
-                    {[
-                      "15 técnicas probadas para iniciar conversaciones",
-                      "Basado en psicología del comportamiento",
-                      "Análisis de patrones de comunicación digital",
-                      "Estrategias que generan respuestas inmediatas",
-                      "Métodos testados con miles de interacciones",
-                      "Guía práctica para comunicación eficaz"
-                    ].map((feature, index) => (
-                      <li key={index} className="flex items-center text-white text-sm md:text-base">
-                        <span className="w-4 h-4 text-yellow-500 mr-3 flex-shrink-0">✓</span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
                   
                   <button className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-lg font-semibold uppercase tracking-wide transition-all duration-300 hover:from-yellow-600 hover:to-yellow-500 hover:shadow-lg hover:shadow-yellow-500/30 hover:-translate-y-1 flex items-center gap-3 mx-auto md:mx-0">
                     Acceder a las 15 Maneras
@@ -325,7 +296,7 @@ const MembersArea = ({ userEmail, onLogout }) => {
           </a>
         </div>
 
-        {/* Card Protocolo - DESBLOQUEADO */}
+        {/* Card Protocolo */}
         <div className="mb-12">
           <a 
             href="https://comprarplanseguro.shop/protocolo/"
@@ -339,7 +310,6 @@ const MembersArea = ({ userEmail, onLogout }) => {
                     src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/imagem_gerada-2025-06-11T090923.835.png"
                     alt="Protocolo de Dominancia Emocional"
                     className="w-full h-full object-cover"
-                    loading="lazy"
                   />
                 </div>
 
@@ -349,24 +319,8 @@ const MembersArea = ({ userEmail, onLogout }) => {
                   </h2>
                   
                   <p className="text-white text-sm md:text-lg mb-6 leading-relaxed">
-                    La ciencia definitiva de la reconquista. Un sistema completo basado en neurociencia emocional, psicología femenina y dinámicas de atracción profunda que ya ha transformado la vida de más de 3,800 hombres.
+                    La ciencia definitiva de la reconquista. Un sistema completo basado en neurociencia emocional, psicología femenina y dinámicas de atracción profunda.
                   </p>
-                  
-                  <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8">
-                    {[
-                      "Arquitectura estratégica completa",
-                      "7 Disparadores de Obsesión Femenina",
-                      "21 Frases de Dominancia Emocional",
-                      "Protocolo de Inversión de Dinámica",
-                      "Casos reales y estudios detallados",
-                      "Mensajes de emergencia para situaciones límite"
-                    ].map((feature, index) => (
-                      <li key={index} className="flex items-center text-white text-sm md:text-base">
-                        <span className="w-4 h-4 text-red-500 mr-3 flex-shrink-0">✓</span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
                   
                   <button className="bg-gradient-to-r from-red-500 to-red-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-lg font-semibold uppercase tracking-wide transition-all duration-300 hover:from-red-600 hover:to-red-500 hover:shadow-lg hover:shadow-red-500/30 hover:-translate-y-1 flex items-center gap-3 mx-auto md:mx-0">
                     Acceder al Protocolo Completo
@@ -378,7 +332,7 @@ const MembersArea = ({ userEmail, onLogout }) => {
           </a>
         </div>
 
-        {/* Card Sistema de Blindaje - DESBLOQUEADO */}
+        {/* Card Sistema de Blindaje */}
         <div className="mb-12">
           <a 
             href="https://comprarplanseguro.shop/blindaje/"
@@ -392,7 +346,6 @@ const MembersArea = ({ userEmail, onLogout }) => {
                     src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/imagem_gerada-2025-06-10T233008.344.png"
                     alt="Sistema de Blindaje"
                     className="w-full h-full object-cover"
-                    loading="lazy"
                   />
                 </div>
 
@@ -402,25 +355,8 @@ const MembersArea = ({ userEmail, onLogout }) => {
                   </h2>
                   
                   <p className="text-white text-sm md:text-lg mb-6 leading-relaxed">
-                    El sistema definitivo para blindar tu relación contra cualquier amenaza externa. Una metodología avanzada que garantiza que su obsesión por ti crezca con el tiempo, creando inmunidad total contra otros hombres.
+                    El sistema definitivo para blindar tu relación contra cualquier amenaza externa. Una metodología avanzada que garantiza que su obsesión por ti crezca con el tiempo.
                   </p>
-                  
-                  <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8">
-                    {[
-                      "Su obsesión por ti CRECE con el tiempo",
-                      "Inmunidad total contra otros hombres",
-                      "Relación cada vez más sólida y apasionada",
-                      "Nunca se aburre de ti (renovación constante)",
-                      "97% probabilidad de relación permanente",
-                      "Ella te ve como "el hombre de su vida"",
-                      "Relación blindada para toda la vida"
-                    ].map((feature, index) => (
-                      <li key={index} className="flex items-center text-white text-sm md:text-base">
-                        <span className="w-4 h-4 text-red-500 mr-3 flex-shrink-0">✓</span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
                   
                   <button className="bg-gradient-to-r from-red-500 to-red-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-lg font-semibold uppercase tracking-wide transition-all duration-300 hover:from-red-600 hover:to-red-500 hover:shadow-lg hover:shadow-red-500/30 hover:-translate-y-1 flex items-center gap-3 mx-auto md:mx-0">
                     Acceder al Sistema de Blindaje
@@ -454,82 +390,4 @@ const MembersArea = ({ userEmail, onLogout }) => {
       </div>
     </div>
   );
-};
-
-export default function Home() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userEmail, setUserEmail] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  
-  // Refs para lazy loading
-  const [heroRef, heroInView] = useIntersectionObserver({ threshold: 0.1 });
-
-  // ✅ CTA HANDLER MANTIDO
-  const handleCTA = useCallback((e, origem) => {
-    if (isLoading) return;
-    
-    setIsLoading(true);
-    
-    console.log(`🎯 CTA clicado - Origem: ${origem}`);
-    
-    // Tracking mantido da estrutura original
-    enviarEvento('cta_click', { origem, timestamp: Date.now() });
-    
-    // Haptic feedback
-    if (navigator.vibrate) {
-      navigator.vibrate(50);
-    }
-    
-    // Reset para UX
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1200);
-  }, [isLoading]);
-
-  // Função de login
-  const handleLogin = (email) => {
-    setUserEmail(email);
-    setIsLoggedIn(true);
-    enviarEvento('member_area_access', { email: email.split('@')[1] });
-  };
-
-  // Função de logout
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setUserEmail('');
-    enviarEvento('member_area_logout');
-  };
-
-  // Verificar se já está logado (localStorage)
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    const savedEmail = localStorage.getItem('member_email');
-    if (savedEmail) {
-      setUserEmail(savedEmail);
-      setIsLoggedIn(true);
-    }
-  }, []);
-
-  // Salvar email no localStorage quando logar
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    if (isLoggedIn && userEmail) {
-      localStorage.setItem('member_email', userEmail);
-    } else {
-      localStorage.removeItem('member_email');
-    }
-  }, [isLoggedIn, userEmail]);
-
-  return (
-    <main>
-      {/* Renderização condicional */}
-      {!isLoggedIn ? (
-        <LoginScreen onLogin={handleLogin} />
-      ) : (
-        <MembersArea userEmail={userEmail} onLogout={handleLogout} />
-      )}
-    </main>
-  )
 }
