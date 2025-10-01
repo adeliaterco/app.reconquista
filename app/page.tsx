@@ -195,7 +195,7 @@ export default function Home() {
         {/* Tarjeta del Plan A */}
         <div className="mb-12">
           <a 
-            href="https://comprarplanseguro.shop/plan-a/"
+            href="https://comprarplanseguro.shop/plan-es/"
             className="block relative group"
           >
             <div className="relative bg-gray-800 rounded-3xl p-6 md:p-10 border-2 border-transparent transition-all duration-500 overflow-hidden cursor-pointer hover:border-red-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-red-500/20">
