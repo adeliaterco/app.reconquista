@@ -9,7 +9,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // Função de login
+  // Función de login
   const handleLogin = (emailValue) => {
     setUserEmail(emailValue);
     setIsLoggedIn(true);
@@ -18,7 +18,7 @@ export default function Home() {
     }
   };
 
-  // Função de logout
+  // Función de logout
   const handleLogout = () => {
     setIsLoggedIn(false);
     setUserEmail('');
@@ -43,12 +43,12 @@ export default function Home() {
     e.preventDefault();
     
     if (!email) {
-      setError('Por favor, ingresa tu email');
+      setError('Por favor, introduce tu correo electrónico');
       return;
     }
 
     if (!email.includes('@')) {
-      setError('Por favor, ingresa un email válido');
+      setError('Por favor, introduce un correo electrónico válido');
       return;
     }
 
@@ -61,13 +61,13 @@ export default function Home() {
     }, 1500);
   };
 
-  // Se não estiver logado, mostrar tela de login
+  // Si no está conectado, mostrar pantalla de login
   if (!isLoggedIn) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center p-4">
         <div className="w-full max-w-md">
           
-          {/* Logo/Foto do Produto */}
+          {/* Logo/Foto del Producto */}
           <div className="text-center mb-8">
             <div className="relative w-32 h-32 mx-auto mb-6 rounded-3xl overflow-hidden border-4 border-red-500 shadow-2xl">
               <img
@@ -78,22 +78,22 @@ export default function Home() {
             </div>
             
             <h1 className="text-2xl md:text-3xl font-black text-red-500 mb-2 uppercase tracking-tight">
-              Área de Miembros
+              Área de Socios
             </h1>
             <p className="text-gray-300 text-sm">Protocolo de Dominancia Emocional</p>
           </div>
 
-          {/* Formulário de Login */}
+          {/* Formulario de Login */}
           <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 shadow-2xl">
             <div className="text-center mb-6">
               <h2 className="text-xl font-bold text-white mb-2">🔐 Acceso Exclusivo</h2>
-              <p className="text-gray-400 text-sm">Ingresa tu email para acceder a tu contenido</p>
+              <p className="text-gray-400 text-sm">Introduce tu correo electrónico para acceder a tu contenido</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                  Email de acceso
+                  Correo electrónico de acceso
                 </label>
                 <input
                   type="email"
@@ -103,7 +103,7 @@ export default function Home() {
                     setEmail(e.target.value);
                     setError('');
                   }}
-                  placeholder="tu@email.com"
+                  placeholder="tu@correo.com"
                   className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
                   disabled={isLoading}
                 />
@@ -136,12 +136,12 @@ export default function Home() {
 
             <div className="mt-6 text-center">
               <p className="text-gray-500 text-xs">
-                🔒 Acceso seguro y encriptado
+                🔒 Acceso seguro y cifrado
               </p>
             </div>
           </div>
 
-          {/* Informações de suporte */}
+          {/* Información de soporte */}
           <div className="text-center mt-6">
             <p className="text-gray-400 text-sm mb-2">¿Problemas de acceso?</p>
             <a 
@@ -156,17 +156,17 @@ export default function Home() {
     );
   }
 
-  // Se estiver logado, mostrar área de membros
+  // Si está conectado, mostrar área de socios
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         
-        {/* Header da Área de Membros */}
+        {/* Cabecera del Área de Socios */}
         <div className="relative max-w-5xl mx-auto p-6 md:p-8 mb-12">
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 to-red-800/10 rounded-2xl border border-red-500/30"></div>
           <div className="absolute inset-2 border border-red-500/20 rounded-xl pointer-events-none"></div>
           
-          {/* Botão de logout */}
+          {/* Botón de logout */}
           <button
             onClick={handleLogout}
             className="absolute top-4 right-4 text-gray-400 hover:text-red-400 transition-colors duration-300 z-10"
@@ -177,7 +177,7 @@ export default function Home() {
           
           <div className="relative z-10 text-center">
             <h1 className="text-3xl md:text-6xl font-black text-red-500 mb-4 uppercase tracking-tight">
-              Área de Miembros
+              Área de Socios
             </h1>
             <p className="text-lg md:text-2xl text-white font-light mb-6">Plan A</p>
             
@@ -186,14 +186,14 @@ export default function Home() {
                 🎯 ¡Bienvenido {userEmail ? userEmail.split('@')[0] : 'Usuario'}!
               </h3>
               <p className="text-white leading-relaxed text-sm md:text-base">
-                Ahora tienes acceso al sistema más avanzado de reconquista y dominancia emocional jamás desarrollado. 
-                Haz clic en las imágenes de abajo para acceder a tus cursos completos.
+                Ahora tenéis acceso al sistema más avanzado de reconquista y dominancia emocional jamás desarrollado. 
+                Haced clic en las imágenes de abajo para acceder a vuestros cursos completos.
               </p>
             </div>
           </div>
         </div>
         
-        {/* Card do Plan A */}
+        {/* Tarjeta del Plan A */}
         <div className="mb-12">
           <a 
             href="https://comprarplanseguro.shop/plan-a/"
@@ -256,7 +256,7 @@ export default function Home() {
           </a>
         </div>
 
-        {/* Card 15 Maneiras */}
+        {/* Tarjeta 15 Maneras */}
         <div className="mb-12">
           <a 
             href="https://comprarplanseguro.shop/15-maneras/"
@@ -296,7 +296,7 @@ export default function Home() {
           </a>
         </div>
 
-        {/* Card Protocolo */}
+        {/* Tarjeta Protocolo */}
         <div className="mb-12">
           <a 
             href="https://comprarplanseguro.shop/protocolo/"
@@ -332,7 +332,7 @@ export default function Home() {
           </a>
         </div>
 
-        {/* Card Sistema de Blindaje */}
+        {/* Tarjeta Sistema de Blindaje */}
         <div className="mb-12">
           <a 
             href="https://comprarplanseguro.shop/blindaje/"
@@ -355,7 +355,7 @@ export default function Home() {
                   </h2>
                   
                   <p className="text-white text-sm md:text-lg mb-6 leading-relaxed">
-                    El sistema definitivo para blindar tu relación contra cualquier amenaza externa. Una metodología avanzada que garantiza que su obsesión por ti crezca con el tiempo.
+                    El sistema definitivo para blindar vuestra relación contra cualquier amenaza externa. Una metodología avanzada que garantiza que su obsesión por vosotros crezca con el tiempo.
                   </p>
                   
                   <button className="bg-gradient-to-r from-red-500 to-red-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-lg font-semibold uppercase tracking-wide transition-all duration-300 hover:from-red-600 hover:to-red-500 hover:shadow-lg hover:shadow-red-500/30 hover:-translate-y-1 flex items-center gap-3 mx-auto md:mx-0">
@@ -368,11 +368,11 @@ export default function Home() {
           </a>
         </div>
 
-        {/* Seção de Suporte */}
+        {/* Sección de Soporte */}
         <div className="bg-white/5 p-6 md:p-8 rounded-2xl text-center max-w-2xl mx-auto mb-12">
-          <h3 className="text-red-400 text-xl md:text-2xl font-bold mb-4">💬 ¿Necesitas Ayuda?</h3>
+          <h3 className="text-red-400 text-xl md:text-2xl font-bold mb-4">💬 ¿Necesitáis Ayuda?</h3>
           <p className="text-white mb-6 leading-relaxed text-sm md:text-base">
-            Nuestro equipo de soporte está disponible para aclarar dudas y asistirte en tu jornada de transformación.
+            Nuestro equipo de soporte está disponible para aclarar dudas y asistiros en vuestro viaje de transformación.
           </p>
           <a 
             href="mailto:soporte.plan.a@gmail.com"
@@ -382,10 +382,10 @@ export default function Home() {
           </a>
         </div>
 
-        {/* Footer */}
+        {/* Pie de página */}
         <div className="text-center py-8 md:py-12 border-t border-red-500/30 text-gray-400">
           <p className="mb-2 text-sm md:text-base">© 2025 Protocolo de Dominancia Emocional. Todos los derechos reservados.</p>
-          <p className="font-semibold text-sm md:text-base">Tu transformación comienza ahora.</p>
+          <p className="font-semibold text-sm md:text-base">Vuestra transformación comienza ahora.</p>
         </div>
       </div>
     </div>
