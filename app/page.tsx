@@ -80,7 +80,6 @@ export default function Home() {
             <h1 className="text-2xl md:text-3xl font-black text-red-500 mb-2 uppercase tracking-tight">
               Área de Socios
             </h1>
-            <p className="text-gray-300 text-sm">Protocolo de Dominancia Emocional</p>
           </div>
 
           {/* Formulario de Login */}
