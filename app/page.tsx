@@ -203,7 +203,7 @@ export default function Home() {
               <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-8">
                 <div className="flex-shrink-0 w-40 md:w-48 h-56 md:h-64 rounded-2xl overflow-hidden border-2 border-red-500 transition-transform duration-300 group-hover:scale-105">
                   <img
-                    src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/Nova-Imagem-Plan-A-Livro.png"
+                    src="http://renacer21.shop/wp-content/uploads/2025/10/8ab951a3-65e5-4f93-98df-0601868719ff.png"
                     alt="M.MDR: Reconquista en 21 Días"
                     className="w-full h-full object-cover"
                   />
