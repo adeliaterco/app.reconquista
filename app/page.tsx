@@ -145,10 +145,10 @@ export default function Home() {
           <div className="text-center mt-6">
             <p className="text-gray-400 text-sm mb-2">¿Problemas de acceso?</p>
             <a 
-              href="mailto:soporte.plan.a@gmail.com"
+              href="mailto:sflourcraft@gmail.com"
               className="text-red-400 hover:text-red-300 text-sm font-medium transition-colors duration-300"
             >
-              soporte.plan.a@gmail.com
+              sflourcraft@gmail.com
             </a>
           </div>
         </div>
@@ -375,10 +375,10 @@ export default function Home() {
             Nuestro equipo de soporte está disponible para aclarar dudas y asistiros en vuestro viaje de transformación.
           </p>
           <a 
-            href="mailto:soporte.plan.a@gmail.com"
+            href="mailto:sflourcraft@gmail.com"
             className="inline-block bg-red-500 hover:bg-red-600 text-white px-6 md:px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-500/30 text-sm md:text-base"
           >
-            soporte.plan.a@gmail.com
+            sflourcraft@gmail.com
           </a>
         </div>
 
