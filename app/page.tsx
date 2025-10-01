@@ -179,7 +179,7 @@ export default function Home() {
             <h1 className="text-3xl md:text-6xl font-black text-red-500 mb-4 uppercase tracking-tight">
               Área de Socios
             </h1>
-            <p className="text-lg md:text-2xl text-white font-light mb-6">Plan A</p>
+            <p className="text-lg md:text-2xl text-white font-light mb-6">M.MDR</p>
             
             <div className="bg-white/5 p-4 md:p-6 rounded-xl border-l-4 border-red-500">
               <h3 className="text-red-400 font-bold text-base md:text-xl mb-3">
@@ -205,14 +205,14 @@ export default function Home() {
                 <div className="flex-shrink-0 w-40 md:w-48 h-56 md:h-64 rounded-2xl overflow-hidden border-2 border-red-500 transition-transform duration-300 group-hover:scale-105">
                   <img
                     src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/Nova-Imagem-Plan-A-Livro.png"
-                    alt="Plan A: Reconquista en 21 Días"
+                    alt="M.MDR: Reconquista en 21 Días"
                     className="w-full h-full object-cover"
                   />
                 </div>
 
                 <div className="flex-1 text-center md:text-left">
                   <h2 className="text-2xl md:text-4xl font-bold text-red-500 mb-4 leading-tight">
-                    Plan A: Reconquista en 21 Días
+                    M.MDR: Reconquista en 21 Días
                   </h2>
                   
                   <p className="text-white text-sm md:text-lg mb-6 leading-relaxed">
@@ -247,7 +247,7 @@ export default function Home() {
                   </ul>
                   
                   <button className="bg-gradient-to-r from-red-500 to-red-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-lg font-semibold uppercase tracking-wide transition-all duration-300 hover:from-red-600 hover:to-red-500 hover:shadow-lg hover:shadow-red-500/30 hover:-translate-y-1 flex items-center gap-3 mx-auto md:mx-0">
-                    Acceder al Plan A Completo
+                    Acceder al M.MDR Completo
                     <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </button>
                 </div>
