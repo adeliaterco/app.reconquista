@@ -10,9 +10,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Design Estrategico",
+  title: "Área de Socios",
   description:
-    "FDE",
+    "Protocolo de Dominancia Emocional",
   generator: "v0.dev",
 }
 
@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} antialiased`}>
+    <html lang="es-ES" className={`${inter.variable} antialiased`}>
       <body className="font-sans">{children}</body>
     </html>
   )
