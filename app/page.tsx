@@ -1,8 +1,6 @@
 "use client"
 
 import { useState, useEffect, useCallback, useRef } from "react"
-import Script from "next/script"
-import Image from "next/image"
 
 // GA otimizado com debounce (mantido)
 const enviarEvento = (() => {
@@ -30,6 +28,8 @@ const useIntersectionObserver = (options = {}) => {
   const ref = useRef(null);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     if (!window.IntersectionObserver) {
       setIsIntersecting(true);
       return;
@@ -44,7 +44,7 @@ const useIntersectionObserver = (options = {}) => {
     }
 
     return () => observer.disconnect();
-  }, [options]);
+  }, []);
 
   return [ref, isIntersecting];
 };
@@ -87,12 +87,11 @@ const LoginScreen = ({ onLogin }) => {
         {/* Logo/Foto do Produto */}
         <div className="text-center mb-8">
           <div className="relative w-32 h-32 mx-auto mb-6 rounded-3xl overflow-hidden border-4 border-red-500 shadow-2xl shadow-red-500/20">
-            <Image
+            <img
               src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/Nova-Imagem-Plan-A-Livro.png"
               alt="Protocolo de Dominancia Emocional"
-              width={128}
-              height={128}
               className="w-full h-full object-cover"
+              loading="eager"
             />
           </div>
           
@@ -203,7 +202,7 @@ const MembersArea = ({ userEmail, onLogout }) => {
             
             <div className="bg-white/5 p-4 md:p-6 rounded-xl border-l-4 border-red-500">
               <h3 className="text-red-400 font-bold text-base md:text-xl mb-3">
-                🎯 ¡Bienvenido {userEmail.split('@')[0]}!
+                🎯 ¡Bienvenido {userEmail ? userEmail.split('@')[0] : 'Usuario'}!
               </h3>
               <p className="text-white leading-relaxed text-sm md:text-base">
                 Ahora tienes acceso al sistema más avanzado de reconquista y dominancia emocional jamás desarrollado. 
@@ -225,12 +224,11 @@ const MembersArea = ({ userEmail, onLogout }) => {
               
               <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-8">
                 <div className="flex-shrink-0 w-40 md:w-48 h-56 md:h-64 rounded-2xl overflow-hidden border-2 border-red-500 transition-transform duration-300 group-hover:scale-105">
-                  <Image
+                  <img
                     src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/Nova-Imagem-Plan-A-Livro.png"
                     alt="Plan A: Reconquista en 21 Días"
-                    width={200}
-                    height={280}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
 
@@ -284,12 +282,11 @@ const MembersArea = ({ userEmail, onLogout }) => {
 
               <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-8">
                 <div className="flex-shrink-0 w-40 md:w-48 h-56 md:h-64 rounded-2xl overflow-hidden border-2 border-yellow-500 transition-transform duration-300 group-hover:scale-105">
-                  <Image
+                  <img
                     src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/imagem_gerada-2025-06-12T001538.498.png"
                     alt="15 Maneras Irresistibles"
-                    width={200}
-                    height={280}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
 
@@ -338,12 +335,11 @@ const MembersArea = ({ userEmail, onLogout }) => {
               
               <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-8">
                 <div className="flex-shrink-0 w-40 md:w-48 h-56 md:h-64 rounded-2xl overflow-hidden border-2 border-red-500 transition-transform duration-300 group-hover:scale-105">
-                  <Image
+                  <img
                     src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/imagem_gerada-2025-06-11T090923.835.png"
                     alt="Protocolo de Dominancia Emocional"
-                    width={200}
-                    height={280}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
 
@@ -392,12 +388,11 @@ const MembersArea = ({ userEmail, onLogout }) => {
               
               <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-8">
                 <div className="flex-shrink-0 w-40 md:w-48 h-56 md:h-64 rounded-2xl overflow-hidden border-2 border-red-500 transition-transform duration-300 group-hover:scale-105">
-                  <Image
+                  <img
                     src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/imagem_gerada-2025-06-10T233008.344.png"
                     alt="Sistema de Blindaje"
-                    width={200}
-                    height={280}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
 
@@ -507,6 +502,8 @@ export default function Home() {
 
   // Verificar se já está logado (localStorage)
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const savedEmail = localStorage.getItem('member_email');
     if (savedEmail) {
       setUserEmail(savedEmail);
@@ -516,6 +513,8 @@ export default function Home() {
 
   // Salvar email no localStorage quando logar
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     if (isLoggedIn && userEmail) {
       localStorage.setItem('member_email', userEmail);
     } else {
@@ -524,32 +523,13 @@ export default function Home() {
   }, [isLoggedIn, userEmail]);
 
   return (
-    <>
-      {/* Scripts de tracking mantidos */}
-      <Script id="facebook-pixel" strategy="lazyOnload">
-        {`
-          window.pixelId = "68d352fa2bbdabf114779dac";
-          var a = document.createElement("script");
-          a.setAttribute("async", "");
-          a.setAttribute("defer", "");
-          a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-          document.head.appendChild(a);
-        `}
-      </Script>
-
-      <Script
-        src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-        data-utmify-prevent-xcod-sck
-        data-utmify-prevent-subids
-        strategy="lazyOnload"
-      />
-
+    <main>
       {/* Renderização condicional */}
       {!isLoggedIn ? (
         <LoginScreen onLogin={handleLogin} />
       ) : (
         <MembersArea userEmail={userEmail} onLogout={handleLogout} />
       )}
-    </>
+    </main>
   )
 }
