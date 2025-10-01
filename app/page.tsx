@@ -185,7 +185,7 @@ export default function Home() {
                 🎯 ¡Bienvenido {userEmail ? userEmail.split('@')[0] : 'Usuario'}!
               </h3>
               <p className="text-white leading-relaxed text-sm md:text-base">
-                Ahora tenéis acceso al sistema más avanzado de reconquista y dominancia emocional jamás desarrollado. 
+                Ahora tenéis acceso al sistema más avanzado de reconquista jamás desarrollado. 
                 Haced clic en las imágenes de abajo para acceder a vuestros cursos completos.
               </p>
             </div>
