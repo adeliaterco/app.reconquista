@@ -495,7 +495,7 @@ export default function Home() {
 
         {/* Pie de página */}
         <div className="text-center py-8 md:py-12 border-t border-red-500/30 text-gray-400">
-          <p className="mb-2 text-sm md:text-base">© 2025 Protocolo de Dominancia Emocional. Todos los derechos reservados.</p>
+          <p className="mb-2 text-sm md:text-base">© 2025 MRECONQUISTA. Todos los derechos reservados.</p>
           <p className="font-semibold text-sm md:text-base">Vuestra transformación comienza ahora.</p>
         </div>
       </div>
