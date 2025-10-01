@@ -192,7 +192,7 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Tarjeta del Plan A */}
+        {/* Tarjeta del M.MDR */}
         <div className="mb-12">
           <a 
             href="https://comprarplanseguro.shop/plan-es/"
@@ -255,38 +255,53 @@ export default function Home() {
           </a>
         </div>
 
-        {/* Tarjeta 15 Maneras */}
+        {/* Tarjeta El Protocolo de Reapertura Digital */}
         <div className="mb-12">
           <a 
-            href="https://comprarplanseguro.shop/15-maneras/"
+            href="https://el-protocolo-de-reapertu-3e8te6p.gamma.site/"
+            
             className="block relative group"
           >
-            <div className="relative bg-gradient-to-br from-gray-800 to-yellow-900/10 border-2 border-yellow-500/30 rounded-3xl p-6 md:p-10 transition-all duration-500 overflow-hidden cursor-pointer hover:border-yellow-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-yellow-500/20">
+            <div className="relative bg-gray-800 rounded-3xl p-6 md:p-10 border-2 border-transparent transition-all duration-500 overflow-hidden cursor-pointer hover:border-blue-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20">
               
-              <div className="absolute top-5 right-5 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm font-bold uppercase tracking-wide animate-pulse z-20">
-                🎁 EXCLUSIVO
-              </div>
-
               <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-8">
-                <div className="flex-shrink-0 w-40 md:w-48 h-56 md:h-64 rounded-2xl overflow-hidden border-2 border-yellow-500 transition-transform duration-300 group-hover:scale-105">
-                  <img
-                    src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/imagem_gerada-2025-06-12T001538.498.png"
-                    alt="15 Maneras Irresistibles"
-                    className="w-full h-full object-cover"
-                  />
+                <div className="flex-shrink-0 w-40 md:w-48 h-56 md:h-64 rounded-2xl overflow-hidden border-2 border-blue-500 transition-transform duration-300 group-hover:scale-105 bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
+                  <div className="text-center text-white p-4">
+                    <div className="text-4xl mb-2">📱</div>
+                    <div className="text-sm font-bold">PROTOCOLO DIGITAL</div>
+                  </div>
                 </div>
 
                 <div className="flex-1 text-center md:text-left">
-                  <h2 className="text-2xl md:text-4xl font-bold text-yellow-500 mb-4 leading-tight">
-                    15 Maneras Irresistibles de Iniciar Conversaciones en WhatsApp
+                  <h2 className="text-2xl md:text-4xl font-bold text-blue-500 mb-4 leading-tight">
+                    El Protocolo de Reapertura Digital
                   </h2>
                   
                   <p className="text-white text-sm md:text-lg mb-6 leading-relaxed">
-                    Una guía definitiva para la comunicación digital eficaz. Material desarrollado tras años de investigación en psicología del comportamiento.
+                    El Error Fatal que Cometen el 97% al Intentar Reconectar. Solo el 3% logra restablecer contacto exitosamente en redes sociales. Descubre el protocolo exacto que funciona en 21 días.
                   </p>
                   
-                  <button className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-lg font-semibold uppercase tracking-wide transition-all duration-300 hover:from-yellow-600 hover:to-yellow-500 hover:shadow-lg hover:shadow-yellow-500/30 hover:-translate-y-1 flex items-center gap-3 mx-auto md:mx-0">
-                    Acceder a las 15 Maneras
+                  <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8">
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-blue-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Protocolo exacto de 21 días</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-blue-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Estrategias de reconexión digital</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-blue-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Evita los errores del 97%</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-blue-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Técnicas probadas en redes sociales</span>
+                    </li>
+                  </ul>
+                  
+                  <button className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-lg font-semibold uppercase tracking-wide transition-all duration-300 hover:from-blue-600 hover:to-blue-500 hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1 flex items-center gap-3 mx-auto md:mx-0">
+                    Acceder al Protocolo Digital
                     <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </button>
                 </div>
@@ -295,34 +310,53 @@ export default function Home() {
           </a>
         </div>
 
-        {/* Tarjeta Protocolo */}
+        {/* Tarjeta Manual de la Situación Transitoria */}
         <div className="mb-12">
           <a 
-            href="https://comprarplanseguro.shop/protocolo/"
+            href="https://manual-de-la-situacion-t-ea95ugd.gamma.site/"
+            
             className="block relative group"
           >
-            <div className="relative bg-gray-800 rounded-3xl p-6 md:p-10 border-2 border-transparent transition-all duration-500 overflow-hidden cursor-pointer hover:border-red-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-red-500/20">
+            <div className="relative bg-gray-800 rounded-3xl p-6 md:p-10 border-2 border-transparent transition-all duration-500 overflow-hidden cursor-pointer hover:border-purple-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20">
               
               <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-8">
-                <div className="flex-shrink-0 w-40 md:w-48 h-56 md:h-64 rounded-2xl overflow-hidden border-2 border-red-500 transition-transform duration-300 group-hover:scale-105">
-                  <img
-                    src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/imagem_gerada-2025-06-11T090923.835.png"
-                    alt="Protocolo de Dominancia Emocional"
-                    className="w-full h-full object-cover"
-                  />
+                <div className="flex-shrink-0 w-40 md:w-48 h-56 md:h-64 rounded-2xl overflow-hidden border-2 border-purple-500 transition-transform duration-300 group-hover:scale-105 bg-gradient-to-br from-purple-900 to-purple-700 flex items-center justify-center">
+                  <div className="text-center text-white p-4">
+                    <div className="text-4xl mb-2">⏳</div>
+                    <div className="text-sm font-bold">SITUACIÓN TRANSITORIA</div>
+                  </div>
                 </div>
 
                 <div className="flex-1 text-center md:text-left">
-                  <h2 className="text-2xl md:text-4xl font-bold text-red-500 mb-4 leading-tight">
-                    Protocolo de Dominancia Emocional
+                  <h2 className="text-2xl md:text-4xl font-bold text-purple-500 mb-4 leading-tight">
+                    Manual de la Situación Transitoria
                   </h2>
                   
                   <p className="text-white text-sm md:text-lg mb-6 leading-relaxed">
-                    La ciencia definitiva de la reconquista. Un sistema completo basado en neurociencia emocional, psicología femenina y dinámicas de atracción profunda.
+                    La Verdad Que Nadie Te Dice Sobre las Relaciones de Rebote. El 78% de las relaciones post-ruptura duran menos de 6 meses. Descubre cómo posicionarte estratégicamente para cuando termine.
                   </p>
                   
-                  <button className="bg-gradient-to-r from-red-500 to-red-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-lg font-semibold uppercase tracking-wide transition-all duration-300 hover:from-red-600 hover:to-red-500 hover:shadow-lg hover:shadow-red-500/30 hover:-translate-y-1 flex items-center gap-3 mx-auto md:mx-0">
-                    Acceder al Protocolo Completo
+                  <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8">
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-purple-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Análisis de relaciones de rebote</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-purple-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Posicionamiento estratégico</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-purple-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Estadísticas y patrones reales</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-purple-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Timing perfecto de acción</span>
+                    </li>
+                  </ul>
+                  
+                  <button className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-lg font-semibold uppercase tracking-wide transition-all duration-300 hover:from-purple-600 hover:to-purple-500 hover:shadow-lg hover:shadow-purple-500/30 hover:-translate-y-1 flex items-center gap-3 mx-auto md:mx-0">
+                    Acceder al Manual Completo
                     <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </button>
                 </div>
@@ -331,34 +365,112 @@ export default function Home() {
           </a>
         </div>
 
-        {/* Tarjeta Sistema de Blindaje */}
+        {/* Tarjeta La Técnica de la Comunicación Irresistible */}
         <div className="mb-12">
           <a 
-            href="https://comprarplanseguro.shop/blindaje/"
+            href="https://la-tecnica-de-la-comunic-u4okwlk.gamma.site/"
+            
             className="block relative group"
           >
-            <div className="relative bg-gray-800 rounded-3xl p-6 md:p-10 border-2 border-transparent transition-all duration-500 overflow-hidden cursor-pointer hover:border-red-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-red-500/20">
+            <div className="relative bg-gray-800 rounded-3xl p-6 md:p-10 border-2 border-transparent transition-all duration-500 overflow-hidden cursor-pointer hover:border-green-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-green-500/20">
               
               <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-8">
-                <div className="flex-shrink-0 w-40 md:w-48 h-56 md:h-64 rounded-2xl overflow-hidden border-2 border-red-500 transition-transform duration-300 group-hover:scale-105">
-                  <img
-                    src="https://comprarplanseguro.shop/wp-content/uploads/2025/06/imagem_gerada-2025-06-10T233008.344.png"
-                    alt="Sistema de Blindaje"
-                    className="w-full h-full object-cover"
-                  />
+                <div className="flex-shrink-0 w-40 md:w-48 h-56 md:h-64 rounded-2xl overflow-hidden border-2 border-green-500 transition-transform duration-300 group-hover:scale-105 bg-gradient-to-br from-green-900 to-green-700 flex items-center justify-center">
+                  <div className="text-center text-white p-4">
+                    <div className="text-4xl mb-2">💬</div>
+                    <div className="text-sm font-bold">COMUNICACIÓN IRRESISTIBLE</div>
+                  </div>
                 </div>
 
                 <div className="flex-1 text-center md:text-left">
-                  <h2 className="text-2xl md:text-4xl font-bold text-red-500 mb-4 leading-tight">
-                    Sistema de Blindaje
+                  <h2 className="text-2xl md:text-4xl font-bold text-green-500 mb-4 leading-tight">
+                    La Técnica de la Comunicación Irresistible
                   </h2>
                   
                   <p className="text-white text-sm md:text-lg mb-6 leading-relaxed">
-                    El sistema definitivo para blindar vuestra relación contra cualquier amenaza externa. Una metodología avanzada que garantiza que su obsesión por vosotros crezca con el tiempo.
+                    El Secreto de los Hombres que Siempre Saben Qué Decir. El 85% de las mujeres dice que la conversación es más importante que el físico. Técnicas clave que crean atracción instantánea y magnética.
                   </p>
                   
-                  <button className="bg-gradient-to-r from-red-500 to-red-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-lg font-semibold uppercase tracking-wide transition-all duration-300 hover:from-red-600 hover:to-red-500 hover:shadow-lg hover:shadow-red-500/30 hover:-translate-y-1 flex items-center gap-3 mx-auto md:mx-0">
-                    Acceder al Sistema de Blindaje
+                  <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8">
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-green-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Técnicas de conversación magnética</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-green-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Atracción instantánea por palabras</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-green-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Secretos de comunicación irresistible</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-green-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Siempre saber qué decir</span>
+                    </li>
+                  </ul>
+                  
+                  <button className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-lg font-semibold uppercase tracking-wide transition-all duration-300 hover:from-green-600 hover:to-green-500 hover:shadow-lg hover:shadow-green-500/30 hover:-translate-y-1 flex items-center gap-3 mx-auto md:mx-0">
+                    Acceder a las Técnicas
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        {/* Tarjeta Las 7 Estrategias Turbo */}
+        <div className="mb-12">
+          <a 
+            href="https://las-7-estrategias-turbo--jhu8l60.gamma.site/"
+            
+            className="block relative group"
+          >
+            <div className="relative bg-gray-800 rounded-3xl p-6 md:p-10 border-2 border-transparent transition-all duration-500 overflow-hidden cursor-pointer hover:border-orange-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20">
+              
+              <div className="absolute top-5 right-5 bg-gradient-to-r from-orange-500 to-orange-600 text-black px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm font-bold uppercase tracking-wide animate-pulse z-20">
+                🚀 TURBO
+              </div>
+
+              <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-8">
+                <div className="flex-shrink-0 w-40 md:w-48 h-56 md:h-64 rounded-2xl overflow-hidden border-2 border-orange-500 transition-transform duration-300 group-hover:scale-105 bg-gradient-to-br from-orange-900 to-orange-700 flex items-center justify-center">
+                  <div className="text-center text-white p-4">
+                    <div className="text-4xl mb-2">⚡</div>
+                    <div className="text-sm font-bold">7 ESTRATEGIAS TURBO</div>
+                  </div>
+                </div>
+
+                <div className="flex-1 text-center md:text-left">
+                  <h2 className="text-2xl md:text-4xl font-bold text-orange-500 mb-4 leading-tight">
+                    Las 7 Estrategias Turbo de Reaproximación
+                  </h2>
+                  
+                  <p className="text-white text-sm md:text-lg mb-6 leading-relaxed">
+                    De Ignorado a Irresistible en 14 Días o Menos. El 84% de los hombres que aplican estas estrategias logran una respuesta en menos de 2 semanas. Métodos acelerados para hombres listos para actuar YA.
+                  </p>
+                  
+                  <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8">
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-orange-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Resultados en 14 días o menos</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-orange-500 mr-3 flex-shrink-0">✓</span>
+                      <span>84% de tasa de éxito comprobada</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-orange-500 mr-3 flex-shrink-0">✓</span>
+                      <span>Métodos acelerados y efectivos</span>
+                    </li>
+                    <li className="flex items-center text-white text-sm md:text-base">
+                      <span className="w-4 h-4 text-orange-500 mr-3 flex-shrink-0">✓</span>
+                      <span>De ignorado a irresistible</span>
+                    </li>
+                  </ul>
+                  
+                  <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-lg font-semibold uppercase tracking-wide transition-all duration-300 hover:from-orange-600 hover:to-orange-500 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-1 flex items-center gap-3 mx-auto md:mx-0">
+                    Acceder a las 7 Estrategias
                     <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </button>
                 </div>
